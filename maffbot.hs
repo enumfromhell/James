@@ -18,13 +18,11 @@ import qualified MaffStrings as MS
 {-server = "irc.anonymous-austria.com"
 port   = 6667
 chan   = "#mafiapardey"
-nick   = "James"
-passwd = "testjames"-}
+nick   = "James"-}
 server = "localhost"
 port = 6677
 chan = "#"
 nick = "James"
-passwd = ""
 
 -- The 'Net' monad: Wrapping IO, carrying the mutable state in the StateT transformer
 -- and the immutable one in the ReaderT transformer
@@ -172,7 +170,9 @@ evalPrivmsg _ _ _                       = return () -- ignore everything else
 
 -- Eval NOTICE
 evalNotice :: String -> String -> String -> Net ()
-evalNotice s x "James" | isPrefixOf "NickServ" s && isPrefixOf "This nickname" x = privmsg "NickServ" $ concat ["identify ",passwd]
+evalNotice s x "James" | isPrefixOf "NickServ" s && isPrefixOf "This nickname" x = do
+                           passwd <- io getLine
+                           privmsg "NickServ" $ concat ["identify ",passwd]
                        | isPrefixOf "HostServ" s && isPrefixOf "Your vhost" x = write "JOIN" chan
 evalNotice _ _ _ = return ()
 
