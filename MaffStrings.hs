@@ -26,7 +26,7 @@ msNooneKilled English Anonymous = "This time noone has been v&."
 
 msDimitriKilled German Mafia = "In dieser Nacht wurde %s vom Rasenmäher überfahren."
 msDimitriKilled English Mafia = "This night %s was run over by a lawn mower."
-msDimitriKilled German Anonymous = undefined
+msDimitriKilled German Anonymous = "In dieser Nacht ist %s gev& worden, weil er Reichsführer spielte."
 msDimitriKilled English Anonymous = undefined
 
 msExecuted German Mafia = "%s wurde gehängt."
